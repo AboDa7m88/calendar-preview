@@ -1138,7 +1138,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize the manual date input using DD/MM/YYYY.
   if (directDateInput) {
-    directDateInput.value = formatDateInput(selectedDate);
+    //directDateInput.value = formatDateInput(selectedDate);
 
     // Clear the previous validation message while the user is typing.
     directDateInput.addEventListener("input", () => {
@@ -1178,6 +1178,14 @@ document.addEventListener("DOMContentLoaded", () => {
       currentDate.setMonth(currentDate.getMonth() + 1);
 
       renderCalendar();
+    });
+  }
+
+  const goDateBtn = document.getElementById("goDateBtn");
+
+  if (goDateBtn && directDateInput) {
+    goDateBtn.addEventListener("click", () => {
+      applyDirectDateInput(directDateInput);
     });
   }
 

@@ -43,6 +43,7 @@ input {
     border-radius: 10px;
     font-size: 14px;
     outline: none;
+    text-align: center;
 }
 
 .badge {
@@ -2232,4 +2233,28 @@ select.client-filter {
         width: 8px;
         height: 8px;
     }
+}
+
+
+/* Date Input with Go Button */
+.date-input-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.date-input-group input {
+    flex: 1;
+    min-width: 0;
+}
+
+.date-go-btn {
+    display: none;
+    width: auto !important;
+    flex-shrink: 0;
+}
+
+.date-input-group:has(input:not(:placeholder-shown)) .date-go-btn {
+    display: inline-flex;
 }

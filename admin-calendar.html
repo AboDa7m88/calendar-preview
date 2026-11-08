@@ -228,10 +228,16 @@
 
       <div class="panel">
 
-        <div class="panel-head">
-          <div>
-            <h2>Calendar</h2>
-            <p>Track client meetings by status and date.</p>
+        <div class="date-picker-wrapper">
+          <label for="directDateInput">Choose Date</label>
+
+          <div class="date-input-group">
+            <input type="text" id="directDateInput" placeholder="DD/MM/YYYY" autocomplete="off" inputmode="numeric"
+              aria-label="Choose date" class="date-picker-input">
+
+            <button type="button" class="btn-today date-go-btn" id="goDateBtn">
+              Go
+            </button>
           </div>
         </div>
 
@@ -260,11 +266,7 @@
 
           <div class="calendar-bottom-actions">
 
-            <div class="date-picker-wrapper">
-              <label for="directDateInput">Choose Date</label>
-              <input type="text" id="directDateInput" placeholder="DD/MM/YYYY" autocomplete="off" inputmode="numeric"
-                aria-label="Choose date" class="date-picker-input">
-            </div>
+
 
             <button class="btn-today" type="button" id="todayBtn">Today</button>
 
