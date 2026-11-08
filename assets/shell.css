@@ -1,0 +1,428 @@
+/*
+|------------------------------------------------------------------------------
+| Shared app shell: the sidebar becomes a menu on phones
+|------------------------------------------------------------------------------
+|
+| Every page styles its own sidebar inline, in one of two families that differ
+| only in class names - .sidebar/.main on the client pages, .admin-sidebar/
+| .admin-main on the admin ones. Both size themselves from --sidebar-w and both
+| are position:fixed, so this file can reshape either by moving that one
+| variable. Selectors below always name both.
+|
+| Three tiers:
+|
+|   > 950px    full 260px sidebar, collapsible to a 78px rail by the user
+|   769-950px  forced 78px rail - unchanged, the pages do this themselves
+|   <= 768px   off-canvas drawer behind a hamburger, which is all of the below
+|
+| Load it AFTER the page's own </style>. Several rules here deliberately undo an
+| inline rule of the same specificity and rely on source order to win.
+|
+|   <link rel="stylesheet" href="assets/shell.css?v=1" />
+|
+*/
+
+/* Injected by shell.js on every page; inert until the drawer breakpoint. */
+.wz-topbar,
+.wz-scrim,
+.wz-close {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  /* .main and .admin-main already derive their offset and width from this
+     variable, so zeroing it hands the page its full width back. No page's own
+     layout rule is touched.
+
+     The second selector is not redundant: every page force-collapses itself
+     below 950px through :root.sidebar-collapsed { --sidebar-w: 78px }, and a
+     bare :root here loses to it on specificity no matter what a media query
+     wraps it in. Without the match, the drawer pages keep a 78px gutter down
+     the left of a phone with nothing in it. */
+  :root,
+  :root.sidebar-collapsed {
+    --sidebar-w: 0px;
+  }
+
+  /* ── The bar that replaces the sidebar ─────────────────────────────────── */
+
+  .wz-topbar {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    align-items: center;
+    gap: 10px;
+    padding: 0 16px;
+    background: #fff;
+    border-bottom: 1px solid var(--line, #eaecf0);
+    z-index: 900;
+  }
+
+  body {
+    padding-top: 60px;
+  }
+
+  /* Pulled back by the 8px of padding round the icon, so the three lines
+     themselves sit on the 16px gutter the page content uses. */
+  .wz-burger {
+    margin-left: -8px;
+    width: 40px;
+    height: 40px;
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--text, #101828);
+    cursor: pointer;
+  }
+
+  .wz-burger:active {
+    background: #f2f4f8;
+  }
+
+  .wz-burger svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* ── The sidebar, as a drawer ──────────────────────────────────────────── */
+
+  /* Overrides width:var(--sidebar-w), which the rule above just set to 0. */
+  /* Closed, the drawer is hidden as well as moved: off-screen alone still left
+     its links in the Tab order and read out by screen readers on every page.
+     visibility waits for the slide to finish before it hides, so the drawer
+     is seen leaving rather than vanishing. The shadow only exists while open,
+     or its blur shows as a grey edge down the left of every page. */
+  .sidebar,
+  .admin-sidebar {
+    width: min(86vw, 300px);
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform 0.22s ease, visibility 0s linear 0.22s;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+
+  :root.nav-open .sidebar,
+  :root.nav-open .admin-sidebar {
+    transform: none;
+    visibility: visible;
+    transition: transform 0.22s ease, visibility 0s;
+    box-shadow: 0 0 40px rgba(16, 24, 40, 0.18);
+  }
+
+  .wz-scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(16, 24, 40, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.22s ease;
+    z-index: 999;
+  }
+
+  :root.nav-open .wz-scrim {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  :root.nav-open body {
+    overflow: hidden;
+  }
+
+  /* Each page hides the sidebar head below 950px because a 78px rail has no
+     room for a wordmark. The drawer does, and it is where the close sits. */
+  .side-head {
+    display: flex;
+  }
+
+  /* Collapsing to a rail is meaningless inside a drawer; the close button
+     shell.js adds takes this one's place in the head. */
+  .sidebar-toggle,
+  .side-toggle {
+    display: none;
+  }
+
+  .wz-close {
+    display: flex;
+    width: 34px;
+    height: 34px;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 9px;
+    background: transparent;
+    color: var(--muted, #667085);
+    cursor: pointer;
+  }
+
+  .wz-close:active {
+    background: #f2f4f8;
+  }
+
+  .wz-close svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .sidebar,
+  .admin-sidebar,
+  .wz-scrim {
+    transition: none;
+  }
+}
+
+/*
+| ── Page heading on a phone ──────────────────────────────────────────────────
+|
+| Every page sets its own title block - .page-title on most, .welcome on the
+| client Forms page - at desktop sizes, and each shrank it differently for a
+| phone, if at all. One heading for all of them here, as the design draws it:
+| 28px title, a single 14px line under it, 20px to whatever comes next, all on
+| a 16px gutter 20px below the bar.
+|
+| :root lifts these above the pages' own rules, inline or in a media query of
+| their own, whichever order the stylesheets load in. Only the top and sides of
+| the wrapper are set: some pages leave extra room at the bottom on purpose.
+*/
+
+@media (max-width: 768px) {
+
+  :root .admin-main>.admin-content,
+  :root .main>.content,
+  :root .main-wrapper>.main-content {
+    padding-top: 20px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  :root .page-head {
+    margin-bottom: 20px;
+  }
+
+  :root .page-title h1,
+  :root .welcome h1 {
+    font-size: 22px;
+    line-height: 32px;
+    margin-bottom: 4px;
+  }
+
+  :root .page-title p,
+  :root .welcome p {
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  :root .welcome p {
+    margin-bottom: 20px;
+  }
+}
+
+/*
+| ── Wide tables ──────────────────────────────────────────────────────────────
+|
+| shell.js puts every table in one of these. Above the drawer breakpoint it is
+| an ordinary block and changes nothing; below it, the table keeps its natural
+| column widths and the box scrolls instead of the page. Cells stop wrapping so
+| a narrow column is never crushed to one character per line - a table only
+| becomes scrollable when its content genuinely does not fit.
+*/
+
+@media (max-width: 768px) {
+
+  .wz-tablewrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .wz-tablewrap>table {
+    min-width: 100%;
+  }
+
+  .wz-tablewrap th,
+  .wz-tablewrap td {
+    white-space: nowrap;
+  }
+}
+
+/*
+| ── Pagination ───────────────────────────────────────────────────────────────
+|
+| Every list pages the same way - .pager holding .pager-info ("Showing 1 to 10
+| of 45") and .pager-pages (the buttons) - but each page styled the row itself,
+| count on the left and buttons pushed right. One layout for all of them here:
+| the buttons centred under the list, the count centred beneath them, and on a
+| phone the count dropped altogether, since the buttons already say where you
+| are and the count only pushed them onto a second line.
+|
+| :root lifts these above the page's own .pager rules, which some pages load
+| after this file.
+*/
+
+:root .pager:not([hidden]) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+:root .pager-pages {
+  order: 1;
+  justify-content: center;
+}
+
+:root .pager-info {
+  order: 2;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  :root .pager-info {
+    display: none;
+  }
+}
+
+/*
+|------------------------------------------------------------------------------
+| Account popup (the sidebar's account card opens it)
+|------------------------------------------------------------------------------
+|
+| One copy for every admin page. The dialog shell - backdrop, box, header - is
+| also what a few pages build their own dialogs from (settings' slide form,
+| the calendar's request form), so it is wrapped in :where(): no specificity,
+| and a page's own box rule (.slide-box, .req-box) wins whatever the load
+| order. The popup's contents are scoped to #acctModal.
+|
+| It shows the role alone - one of the four the portal has: Owner, plus the
+| Admin, Super Admin and Account Manager the owner hands out on Settings.
+| Esc and the backdrop close it (assets/shell.js).
+*/
+
+:where(.acct-modal) {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .45);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  padding: 20px;
+}
+
+:where(.acct-modal.show) {
+  display: flex;
+}
+
+:where(.acct-box) {
+  width: 100%;
+  max-width: 380px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .18);
+  overflow: hidden;
+}
+
+:where(.acct-head) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #eef1f5;
+}
+
+:where(.acct-head h2) {
+  font-size: 17px;
+}
+
+:where(.acct-head button) {
+  border: none;
+  background: var(--nav-active, #1b1e3a);
+  color: #fff;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+#acctModal .acct-box {
+  max-width: 360px;
+}
+
+#acctModal .acct-body {
+  padding: 20px 24px 24px;
+  text-align: left;
+}
+
+#acctModal .acct-who {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+#acctModal .acct-label {
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--muted, #667085);
+}
+
+#acctModal .acct-role {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text, #101828);
+}
+
+#acctModal .acct-logout {
+  width: 100%;
+  height: 46px;
+  border: 1px solid #f0d2d4;
+  background: #fff;
+  color: var(--brand, #c9000b);
+  border-radius: 12px;
+  font: inherit;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#acctModal .acct-logout:hover {
+  background: #fff5f5;
+}
+
+#acctModal .acct-head button:focus-visible,
+#acctModal .acct-logout:focus-visible {
+  outline: 2px solid var(--nav-active, #1b1e3a);
+  outline-offset: 2px;
+}
+
+
+@media (max-width: 768px) {
+
+  :root input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]):not([type="color"]),
+  :root select,
+  :root textarea {
+    font-size: 16px;
+  }
+}
+
+
+/* iPad: wide tables scroll inside their panel instead of being clipped */
+@media (max-width: 950px) {
+  .wz-tablewrap { overflow-x: auto; }
+}
