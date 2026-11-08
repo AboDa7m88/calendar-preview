@@ -425,7 +425,8 @@ input {
 }
 
 .nav-arrow,
-.btn-today {
+.btn-today,
+.btn-primary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -451,7 +452,8 @@ input {
     padding: 0;
 }
 
-.btn-today {
+.btn-today,
+.btn-primary {
     padding: 0 16px;
     border-color: #334155;
     background: #334155;
@@ -464,7 +466,8 @@ input {
     color: #1e293b;
 }
 
-.btn-today:hover {
+.btn-today:hover,
+.btn-primary:hover {
     border-color: #1e293b;
     background: #1e293b;
     color: #fff;
@@ -1060,7 +1063,7 @@ input {
 .section-head h3 {
     color: var(--text);
     font-size: 16px;
-    font-weight: 800;
+    font-weight: 600;
 }
 
 .section-sub {
@@ -1149,7 +1152,7 @@ input {
     margin-bottom: 3px;
     color: var(--text);
     font-size: 14px;
-    font-weight: 800;
+    font-weight: 600;
 }
 
 .schedule-info p {
@@ -1179,7 +1182,7 @@ input {
     background: transparent;
     color: var(--muted);
     font-size: 11px;
-    font-weight: 800;
+    font-weight: 600;
     letter-spacing: .5px;
     text-align: left;
     text-transform: uppercase;
@@ -1199,7 +1202,7 @@ input {
 .data-table .primary-cell {
     color: var(--text);
     font-size: 14px;
-    font-weight: 800;
+    font-weight: 700;
 }
 
 .data-table .sub-cell {
@@ -1345,7 +1348,7 @@ input {
     margin-bottom: 3px;
     color: var(--text);
     font-size: 14px;
-    font-weight: 800;
+    font-weight: 600;
 }
 
 .request-item p {

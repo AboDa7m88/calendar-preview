@@ -94,8 +94,9 @@ function formatDateInput(value) {
 }
 
 /* Parse and validate DD/MM/YYYY without allowing invalid dates. */
+/* Parse and validate DD/MM/YYYY, accepting different separators. */
 function parseDateInput(value) {
-  const match = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(value.trim());
+  const match = /^(\d{1,2})[\/.-](\d{1,2})[\/.-](\d{4})$/.exec(value.trim());
 
   if (!match) return null;
 
@@ -105,11 +106,19 @@ function parseDateInput(value) {
 
   const date = new Date(year, month - 1, day);
 
+  // Validate the actual calendar date.
   if (
     date.getFullYear() !== year ||
     date.getMonth() !== month - 1 ||
     date.getDate() !== day
   ) {
+    return null;
+  }
+
+  // Reject dates before January 1, 2020.
+  const minDate = new Date(2020, 0, 1);
+
+  if (date < minDate) {
     return null;
   }
 
@@ -541,9 +550,8 @@ function renderCalendar() {
       selectedDate = dateStr;
 
       const directDateInput = document.getElementById("directDateInput");
-
       if (directDateInput) {
-        directDateInput.value = formatDateInput(selectedDate);
+        directDateInput.value = "";
         directDateInput.setCustomValidity("");
       }
 
@@ -1145,18 +1153,12 @@ document.addEventListener("DOMContentLoaded", () => {
       directDateInput.setCustomValidity("");
     });
 
-    // Apply the date when the user leaves the input.
-    directDateInput.addEventListener("blur", () => {
-      applyDirectDateInput(directDateInput);
-    });
-
     // Apply the date immediately when the user presses Enter.
     directDateInput.addEventListener("keydown", (event) => {
       if (event.key === "Enter") {
         event.preventDefault();
 
         applyDirectDateInput(directDateInput);
-        directDateInput.blur();
       }
     });
   }
@@ -1196,7 +1198,7 @@ document.addEventListener("DOMContentLoaded", () => {
       selectedDate = toDateStr(new Date());
 
       if (directDateInput) {
-        directDateInput.value = formatDateInput(selectedDate);
+        directDateInput.value = "";
         directDateInput.setCustomValidity("");
       }
 
