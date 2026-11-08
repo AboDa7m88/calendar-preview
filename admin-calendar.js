@@ -1,9 +1,9 @@
 let adminToken = localStorage.getItem("admin_token");
 let adminUser = JSON.parse(localStorage.getItem("admin_user") || "{}");
 
-if (!adminToken || !adminUser.role) {
-  window.location.href = "admin-login.html";
-}
+// if (!adminToken || !adminUser.role) {
+//   window.location.href = "admin-login.html";
+// }
 
 /* The calendar is about client meetings, so it belongs to the roles that deal
    with clients: owner, super admin and account manager. A plain `seo_admin`

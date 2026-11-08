@@ -2256,6 +2256,8 @@ select.client-filter {
     display: none;
     width: auto !important;
     flex-shrink: 0;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .date-input-group:has(input:not(:placeholder-shown)) .date-go-btn {
