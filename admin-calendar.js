@@ -1191,6 +1191,63 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  const dateSearchToggleBtn = document.getElementById("dateSearchToggle");
+  const datePickerWrapper = document.getElementById("datePickerWrapper");
+
+  if (dateSearchToggleBtn && datePickerWrapper) {
+    dateSearchToggleBtn.addEventListener("click", () => {
+      const isOpen = datePickerWrapper.classList.contains("is-open");
+
+      if (!isOpen) {
+        // Open Search
+        datePickerWrapper.hidden = false;
+
+        requestAnimationFrame(() => {
+          datePickerWrapper.classList.add("is-open");
+        });
+
+        dateSearchToggleBtn.innerHTML = "&times;";
+        dateSearchToggleBtn.setAttribute("aria-expanded", "true");
+
+        setTimeout(() => {
+          document.getElementById("directDateInput")?.focus();
+        }, 300);
+      } else {
+        // Close Search
+        datePickerWrapper.classList.remove("is-open");
+
+        dateSearchToggleBtn.innerHTML = `
+  <svg xmlns="http://www.w3.org/2000/svg"
+       width="20"
+       height="20"
+       viewBox="0 0 24 24"
+       fill="none"
+       stroke="currentColor"
+       stroke-width="2"
+       stroke-linecap="round"
+       stroke-linejoin="round">
+
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M11.5 21h-5.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4.5" />
+    <path d="M16 3v4" />
+    <path d="M8 3v4" />
+    <path d="M4 11h16" />
+    <path d="M15 18a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+    <path d="M20.2 20.2l1.8 1.8" />
+  </svg>
+`;
+
+        dateSearchToggleBtn.setAttribute("aria-expanded", "false");
+
+        setTimeout(() => {
+          if (!datePickerWrapper.classList.contains("is-open")) {
+            datePickerWrapper.hidden = true;
+          }
+        }, 300);
+      }
+    });
+  }
+
   // Return to today's date.
   if (todayBtn) {
     todayBtn.addEventListener("click", () => {

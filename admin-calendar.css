@@ -1,7 +1,3 @@
-/* ================================
-   Global
-================================ */
-
 * {
     margin: 0;
     padding: 0;
@@ -23,10 +19,6 @@ body {
     color: #101828;
     padding: 0;
 }
-
-/* ================================
-   Forms & Badges
-================================ */
 
 label {
     display: block;
@@ -69,10 +61,6 @@ input {
     color: #c9000b;
 }
 
-/* ================================
-   Admin Layout
-================================ */
-
 .admin-sidebar {
     position: fixed;
     top: 0;
@@ -98,10 +86,6 @@ input {
 .admin-content {
     padding: 24px 28px;
 }
-
-/* ================================
-   Sidebar
-================================ */
 
 .side-head {
     display: flex;
@@ -242,10 +226,6 @@ input {
     color: #98a2b3;
 }
 
-/* ================================
-   Collapsible Sidebar
-================================ */
-
 :root.sidebar-collapsed {
     --sidebar-w: 78px;
 }
@@ -290,10 +270,6 @@ input {
     display: none;
 }
 
-/* ================================
-   Navigation Badge
-================================ */
-
 .nav-badge {
     min-width: 18px;
     padding: 3px 6px;
@@ -331,10 +307,6 @@ input {
     font-size: 0;
 }
 
-/* ================================
-   Cards & Panels
-================================ */
-
 .card {
     padding: 24px;
     margin-bottom: 34px;
@@ -367,10 +339,6 @@ input {
     font-size: 12px;
 }
 
-/* ================================
-   Page Header
-================================ */
-
 .page-head {
     display: flex;
     align-items: flex-start;
@@ -392,10 +360,6 @@ input {
     font-size: 14px;
 }
 
-/* ================================
-   Calendar Header & Controls
-================================ */
-
 .cal-head {
     display: flex;
     align-items: center;
@@ -410,10 +374,10 @@ input {
 .cal-controls {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    flex-wrap: nowrap;
+    justify-content: center;
     gap: 8px;
-    min-width: 0;
+    flex-wrap: nowrap;
+    position: relative;
 }
 
 .cal-month {
@@ -483,10 +447,6 @@ input {
 .btn-today[hidden] {
     display: none !important;
 }
-
-/* ================================
-   Calendar Grid
-================================ */
 
 .panel:has(#calendarGrid) {
     padding: 12px;
@@ -563,13 +523,10 @@ input {
     background: #f1f5f9;
 }
 
-
-
 .day-cell.selected-cell {
     position: relative;
     z-index: 1;
     border-color: #64748b;
-    /* border-radius: 9px; */
     background: #e8eef5;
     box-shadow: inset 0 0 0 1px #64748b;
 }
@@ -597,10 +554,6 @@ input {
     background: #334155;
     color: #fff;
 }
-
-/* ================================
-   Calendar Events
-================================ */
 
 .event-card {
     display: block;
@@ -658,10 +611,6 @@ input {
 .more-events:hover {
     color: var(--text);
 }
-
-/* ================================
-   Calendar Footer
-================================ */
 
 .panel:has(#calendarGrid) .calendar-footer {
     display: flex;
@@ -728,10 +677,6 @@ input {
     min-height: 30px;
     padding: 5px 12px;
 }
-
-/* ================================
-   Date Picker
-================================ */
 
 .date-picker-wrapper {
     position: relative;
@@ -950,6 +895,7 @@ input {
     text-align: center;
 }
 
+
 .custom-date-picker-weekdays {
     margin-bottom: 8px;
     color: #64748b;
@@ -1029,10 +975,6 @@ input {
     background: #1e293b;
 }
 
-/* ================================
-   View Toggle
-================================ */
-
 .view-toggle {
     display: flex;
     flex: none;
@@ -1059,10 +1001,6 @@ input {
     color: #101828;
     box-shadow: 0 2px 4px rgba(16, 24, 40, .06);
 }
-
-/* ================================
-   Section Headers
-================================ */
 
 .section-head {
     display: flex;
@@ -1099,10 +1037,6 @@ input {
 .section-link:hover {
     text-decoration: underline;
 }
-
-/* ================================
-   Daily Schedule
-================================ */
 
 .schedule-list {
     display: flex;
@@ -1180,10 +1114,6 @@ input {
     font-weight: 700;
 }
 
-/* ================================
-   Data Tables
-================================ */
-
 .data-table {
     width: 100%;
     border-collapse: collapse;
@@ -1230,10 +1160,6 @@ input {
     text-align: center;
 }
 
-/* ================================
-   Requester
-================================ */
-
 .who {
     display: flex;
     align-items: center;
@@ -1259,10 +1185,6 @@ input {
     font-size: 13px;
     font-weight: 700;
 }
-
-/* ================================
-   Row Actions
-================================ */
 
 .row-actions {
     display: flex;
@@ -1331,10 +1253,6 @@ input {
     height: 16px;
 }
 
-/* ================================
-   Requests
-================================ */
-
 .request-list {
     display: flex;
     flex-direction: column;
@@ -1368,10 +1286,6 @@ input {
     color: var(--muted);
     font-size: 12px;
 }
-
-/* ================================
-   Pagination
-================================ */
 
 .pager {
     display: flex;
@@ -1429,10 +1343,6 @@ input {
     cursor: not-allowed;
 }
 
-/* ================================
-   Request Form
-================================ */
-
 .request-form {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1489,10 +1399,6 @@ input {
 .form-status.ok {
     color: #17803d;
 }
-
-/* ================================
-   Request Details Dialog
-================================ */
 
 .req-box {
     display: flex;
@@ -1600,10 +1506,6 @@ input {
     display: none;
 }
 
-/* ================================
-   Select Dropdown Arrow
-================================ */
-
 select,
 .panel-body select,
 .assignment-box select,
@@ -1618,10 +1520,6 @@ select.client-filter {
     background-size: 12px;
 }
 
-/* ================================
-   Day View
-================================ */
-
 .calendar-grid.one-day {
     grid-template-columns: minmax(0, 1fr);
 }
@@ -1630,12 +1528,7 @@ select.client-filter {
     min-height: 220px;
 }
 
-/* ================================
-   Responsive: Tablet
-================================ */
-
 @media (max-width: 950px) {
-
     .admin-content {
         padding: 24px 18px;
     }
@@ -1679,14 +1572,7 @@ select.client-filter {
     }
 }
 
-/* ================================
-   Responsive: Mobile
-================================ */
-
 @media (max-width: 600px) {
-
-    /* Layout */
-
     .admin-content {
         padding: 24px 18px;
     }
@@ -1708,8 +1594,6 @@ select.client-filter {
     .request-form {
         grid-template-columns: minmax(0, 1fr);
     }
-
-    /* Calendar */
 
     .panel:has(#calendarGrid) {
         padding: 8px;
@@ -1852,8 +1736,6 @@ select.client-filter {
         flex-wrap: wrap;
     }
 
-    /* Data tables */
-
     .card .wz-tablewrap {
         overflow-x: hidden !important;
         width: 100%;
@@ -1916,131 +1798,119 @@ select.client-filter {
     .card .data-table td:last-child .badge {
         display: none;
     }
-
-    .card .data-table .row-kebab {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 36px;
-        height: 36px;
-        padding: 0;
-        border: 1px solid #dfe3ea;
-        border-radius: 9px;
-        background: #fff;
-        color: var(--muted);
-        cursor: pointer;
-    }
-
-    .row-kebab svg {
-        width: 18px;
-        height: 18px;
-    }
-
-    /* Schedule & Requests */
-
-    .wide-only {
-        display: none;
-    }
-
-    .eye-btn {
-        display: flex;
-    }
-
-    .schedule-row {
-        gap: 12px;
-    }
-
-    .schedule-info h4,
-    .schedule-info p,
-    .request-item h4,
-    .request-item p {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    .request-item {
-        padding: 14px;
-    }
-
-    /* Request dialog */
-
-    .req-meta {
-        grid-template-columns: minmax(0, 1fr);
-    }
-
-    .req-foot {
-        flex-wrap: wrap;
-    }
-
-    .req-foot button {
-        flex: 1;
-        min-width: 120px;
-    }
-
-    /* Request form */
-
-    .request-form input,
-    .request-form select,
-    .request-form textarea {
-        font-size: 16px;
-    }
-
-    /* Date picker */
-
-    .custom-date-picker {
-        right: auto;
-        left: 0;
-        width: min(290px, calc(100vw - 40px));
-    }
-
-    .date-picker-wrapper {
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    .date-picker-wrapper label {
-        font-size: 14px;
-    }
-
-    .date-picker-wrapper input {
-        width: 100%;
-        min-width: 0;
-        height: 44px;
-        font-size: 14px;
-    }
-
-    .calendar-color-guide {
-        gap: 12px 16px;
-        width: 100%;
-    }
-
-    .calendar-bottom-actions {
-        flex-direction: column;
-        align-items: stretch;
-        width: 100%;
-        gap: 12px;
-    }
-
-    .date-picker-wrapper {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 8px;
-    }
-
-    .btn-today {
-        width: 100%;
-        min-height: 44px;
-        margin: 0;
-    }
 }
 
-/* ================================
-   Responsive: Small Phones
-================================ */
+
+.card .data-table .row-kebab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 1px solid #dfe3ea;
+    border-radius: 9px;
+    background: #fff;
+    color: var(--muted);
+    cursor: pointer;
+}
+
+.row-kebab svg {
+    width: 18px;
+    height: 18px;
+}
+
+.wide-only {
+    display: none;
+}
+
+.eye-btn {
+    display: flex;
+}
+
+.schedule-row {
+    gap: 12px;
+}
+
+.schedule-info h4,
+.schedule-info p,
+.request-item h4,
+.request-item p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.request-item {
+    padding: 14px;
+}
+
+.req-meta {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.req-foot {
+    flex-wrap: wrap;
+}
+
+.req-foot button {
+    flex: 1;
+    min-width: 120px;
+}
+
+.request-form input,
+.request-form select,
+.request-form textarea {
+    font-size: 16px;
+}
+
+.custom-date-picker {
+    right: auto;
+    left: 0;
+    width: min(290px, calc(100vw - 40px));
+}
+
+.date-picker-wrapper {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.date-picker-wrapper label {
+    font-size: 14px;
+}
+
+.date-picker-wrapper input {
+    width: 100%;
+    min-width: 0;
+    height: 44px;
+    font-size: 14px;
+}
+
+.calendar-color-guide {
+    gap: 12px 16px;
+    width: 100%;
+}
+
+.calendar-bottom-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 12px;
+}
+
+.date-picker-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+}
+
+.btn-today {
+    width: 100%;
+    min-height: 44px;
+    margin: 0;
+}
 
 @media (max-width: 380px) {
-
     .calendar-color-guide {
         gap: 10px 12px;
     }
@@ -2050,23 +1920,13 @@ select.client-filter {
     }
 }
 
-/* ================================
-   Responsive: Date Picker
-================================ */
-
 @media (max-width: 480px) {
-
     .custom-date-picker {
         right: auto;
         left: 0;
         width: min(290px, calc(100vw - 40px));
     }
 }
-
-
-/* ================================
-   Date Picker: compact sizes
-================================ */
 
 .custom-date-picker .date-picker-direct input {
     height: 34px;
@@ -2085,13 +1945,10 @@ select.client-filter {
 }
 
 @media (max-width: 600px) {
-
-    /* 16px stops iOS from zooming in when the field is tapped */
     .custom-date-picker .date-picker-direct input {
         font-size: 16px;
     }
 
-    /* Choose Date keeps its own width instead of stretching across the screen */
     .page-head .date-picker-wrapper {
         flex-direction: row;
         align-items: center;
@@ -2099,9 +1956,7 @@ select.client-filter {
     }
 }
 
-
 @media (min-width: 601px) {
-
     .calendar-grid:not(.one-day) .day-cell {
         height: 122px;
         min-height: 0;
@@ -2131,7 +1986,6 @@ select.client-filter {
 }
 
 @media (min-width: 601px) and (max-width: 950px) {
-
     .calendar-grid:not(.one-day) .day-cell {
         height: 104px;
     }
@@ -2152,7 +2006,6 @@ select.client-filter {
 }
 
 @media (max-width: 600px) {
-
     .calendar-grid:not(.one-day) .day-cell {
         display: grid;
         grid-template-columns: repeat(2, 8px);
@@ -2178,7 +2031,6 @@ select.client-filter {
         padding: 0;
     }
 }
-
 
 @media (min-width: 951px) {
     .cal-head {
@@ -2214,11 +2066,9 @@ select.client-filter {
     gap: 20px;
 }
 
-
 .nav-arrow {
     border: 1px solid transparent;
     background: transparent;
-    /* color: var(--muted); */
 }
 
 .nav-arrow:hover {
@@ -2227,9 +2077,7 @@ select.client-filter {
     color: #1e293b;
 }
 
-
 @media (max-width: 600px) {
-
     .panel:has(#calendarGrid) .calendar-color-guide {
         flex-wrap: nowrap;
         justify-content: space-between;
@@ -2251,8 +2099,6 @@ select.client-filter {
     }
 }
 
-
-/* Date Input with Go Button */
 .date-input-group {
     display: flex;
     align-items: center;
@@ -2366,6 +2212,7 @@ select.client-filter {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     #approvalsTable tr,
     #dailySchedule .schedule-row,
     #yourRequests .request-item,
@@ -2374,7 +2221,6 @@ select.client-filter {
         animation: none;
     }
 }
-
 
 .btn-today {
     transition:
@@ -2398,7 +2244,6 @@ select.client-filter {
     opacity: 0;
     transform: translateY(6px);
 }
-
 
 .date-picker-wrapper label {
     color: var(--muted);
@@ -2440,7 +2285,6 @@ select.client-filter {
     border: 0;
     border-radius: 8px;
     outline: none;
-    background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2'/%3E%3Cpath d='M16 2v4M8 2v4M3 10h18'/%3E%3C/svg%3E") no-repeat 10px center / 16px;
     box-shadow: none;
     color: var(--text);
     font-size: 14px;
@@ -2463,7 +2307,7 @@ select.client-filter {
 }
 
 @media (min-width: 601px) {
-    .panel > .date-picker-wrapper {
+    .panel>.date-picker-wrapper {
         justify-content: flex-start;
     }
 }
@@ -2477,5 +2321,510 @@ select.client-filter {
         flex: 1;
         width: auto;
         height: 38px;
+    }
+}
+
+.date-picker-container {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+    gap: 8px;
+    min-width: 0;
+    position: relative;
+}
+
+.date-search-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid #eaecf0;
+    border-radius: 10px;
+    background: #fff;
+    color: #334155;
+    cursor: pointer;
+    transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+}
+
+.date-search-toggle:hover {
+    border-color: #94a3b8;
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+.date-search-toggle:focus-visible {
+    outline: 2px solid #64748b;
+    outline-offset: 2px;
+}
+
+.date-search-toggle svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+
+.date-picker-container>.date-picker-wrapper {
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 8px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex: none;
+    gap: 10px;
+    width: max-content;
+    max-width: min(320px, calc(100vw - 30px));
+    padding: 12px;
+    margin: 0;
+    border: 1px solid #eaecf0;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-50%);
+    transition: opacity .2s ease, visibility .2s ease;
+}
+
+.date-picker-container>.date-picker-wrapper.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.date-picker-container>.date-picker-wrapper[hidden] {
+    display: none !important;
+}
+
+.date-picker-container>.date-picker-wrapper label {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+    width: auto;
+    margin: 0;
+    color: #101828;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.date-picker-container .date-input-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: auto;
+    min-width: 0;
+    padding: 0;
+}
+
+.date-picker-container .date-input-group input {
+    width: 150px;
+    min-width: 0;
+    height: 36px;
+    padding: 0 9px;
+    margin: 0;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #fff;
+    color: #334155;
+    font-size: 13px;
+    text-align: center;
+}
+
+.date-picker-container .date-go-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 34px;
+    width: 34px;
+    min-height: 34px;
+    height: 34px;
+    padding: 0;
+    border-radius: 8px;
+}
+
+@media (max-width: 950px) {
+    .panel:has(#calendarGrid) .cal-head {
+        width: 100%;
+        padding: 0 !important;
+        margin-bottom: 6px;
+        align-items: center;
+    }
+
+    .cal-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: nowrap;
+        gap: 7px;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .cal-month {
+        flex: 0 1 auto;
+        min-width: 0;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    .date-picker-container {
+        gap: 6px;
+    }
+
+    .date-search-toggle {
+        flex-basis: 36px;
+        width: 36px;
+        height: 36px;
+    }
+
+    .panel:has(#calendarGrid) .cal-controls .date-picker-container>.date-picker-wrapper {
+        position: static;
+        top: auto;
+        right: auto;
+        transform: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 0;
+        flex: 0 1 0;
+        width: 0;
+        min-width: 0;
+        max-width: 0;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        border: 0;
+        border-radius: 8px;
+        background: transparent;
+        box-shadow: none;
+        opacity: 0;
+        visibility: hidden;
+        transition: width .25s ease, flex-basis .25s ease, opacity .2s ease, visibility .2s ease;
+    }
+
+    .panel:has(#calendarGrid) .cal-controls .date-picker-container>.date-picker-wrapper.is-open {
+        flex-basis: 170px;
+        width: 170px;
+        max-width: 170px;
+        padding: 2px;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .panel:has(#calendarGrid) .cal-controls .date-picker-container>.date-picker-wrapper label {
+        display: none;
+    }
+
+    .panel:has(#calendarGrid) .cal-controls .date-picker-container .date-input-group {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        width: 100%;
+        min-width: 0;
+        padding: 0;
+    }
+
+    .panel:has(#calendarGrid) .cal-controls .date-picker-container .date-input-group input {
+        flex: 1 1 auto;
+        width: 100%;
+        min-width: 0;
+        height: 34px;
+        padding: 0 5px;
+        font-size: 12px;
+    }
+
+    .panel:has(#calendarGrid) .cal-controls .date-picker-container .date-go-btn {
+        flex: 0 0 30px;
+        width: 30px;
+        min-height: 30px;
+        height: 30px;
+        padding: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .cal-head {
+        align-items: center;
+        width: 100%;
+        padding: 0 !important;
+    }
+
+    .cal-controls {
+        justify-content: space-between;
+        gap: 5px;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .cal-month {
+        flex: 1 1 0;
+        min-width: 0;
+        overflow: hidden;
+        font-size: 14px;
+        text-overflow: ellipsis;
+    }
+
+    .nav-arrow {
+        flex: 0 0 34px;
+        width: 34px;
+        min-width: 34px;
+        min-height: 34px;
+        height: 34px;
+        padding: 0;
+    }
+
+    .date-picker-container {
+        flex: 0 0 auto;
+        gap: 4px;
+    }
+
+    .date-search-toggle {
+        flex: 0 0 34px;
+        width: 34px;
+        height: 34px;
+    }
+
+    .panel:has(#calendarGrid) .cal-controls .date-picker-container>.date-picker-wrapper.is-open {
+        flex-basis: 132px;
+        width: 132px;
+        max-width: 132px;
+    }
+
+    .panel:has(#calendarGrid) .cal-controls .date-picker-container .date-input-group input {
+        height: 32px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 380px) {
+    .cal-controls {
+        gap: 3px;
+    }
+
+    .cal-month {
+        font-size: 12px;
+    }
+
+    .nav-arrow,
+    .date-search-toggle {
+        flex-basis: 30px;
+        width: 30px;
+        min-width: 30px;
+        height: 30px;
+        min-height: 30px;
+    }
+
+    .panel:has(#calendarGrid) .cal-controls .date-picker-container>.date-picker-wrapper.is-open {
+        flex-basis: 112px;
+        width: 112px;
+        max-width: 112px;
+    }
+
+    .panel:has(#calendarGrid) .cal-controls .date-picker-container .date-go-btn {
+        flex-basis: 26px;
+        width: 26px;
+    }
+}
+
+
+/* =====================================
+   FIX: Calendar Search Position
+   Mobile & Tablet
+===================================== */
+
+@media (max-width: 950px) {
+
+    .panel:has(#calendarGrid) .cal-head {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        width: 100%;
+        padding: 0 !important;
+        gap: 8px;
+    }
+
+    /* Month controls */
+    .panel:has(#calendarGrid) .cal-controls {
+        grid-column: 1;
+        grid-row: 1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: auto !important;
+        min-width: 0;
+        gap: 7px;
+        flex-wrap: nowrap;
+    }
+
+    .panel:has(#calendarGrid) .cal-month {
+        flex: 0 1 auto;
+        min-width: 0;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    /* Search icon beside the controls */
+    .panel:has(#calendarGrid) .date-picker-container {
+        grid-column: 2;
+        grid-row: 1;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: flex-start;
+        flex: none;
+        width: auto;
+        min-width: 0;
+        gap: 6px;
+        position: relative;
+    }
+
+    .panel:has(#calendarGrid) .date-search-toggle {
+        flex: 0 0 36px;
+        width: 36px;
+        height: 36px;
+    }
+
+    /* Expand date input beside the icon */
+    .panel:has(#calendarGrid) .date-picker-container>.date-picker-wrapper {
+        position: static;
+        display: flex;
+        flex: 0 0 0;
+        width: 0;
+        min-width: 0;
+        max-width: 0;
+        height: 36px;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        border: 0;
+        box-shadow: none;
+        background: transparent;
+        opacity: 0;
+        visibility: hidden;
+        transform: none;
+        transition:
+            width .25s ease,
+            flex-basis .25s ease,
+            opacity .2s ease,
+            visibility .2s ease;
+    }
+
+    .panel:has(#calendarGrid) .date-picker-container>.date-picker-wrapper.is-open {
+        flex: 0 0 165px;
+        width: 165px;
+        max-width: 165px;
+        padding: 2px;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .panel:has(#calendarGrid) .date-picker-wrapper label {
+        display: none !important;
+    }
+
+    .panel:has(#calendarGrid) .date-picker-container .date-input-group {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        min-width: 0;
+        gap: 4px;
+        padding: 0;
+    }
+
+    .panel:has(#calendarGrid) .date-picker-container .date-input-group input {
+        flex: 1 1 auto;
+        width: 100%;
+        min-width: 0;
+        height: 34px;
+        padding: 0 5px;
+        font-size: 12px;
+    }
+
+    .panel:has(#calendarGrid) .date-picker-container .date-go-btn {
+        flex: 0 0 30px;
+        width: 30px;
+        min-width: 30px;
+        height: 30px;
+        min-height: 30px;
+        padding: 0;
+    }
+
+    /* Calendar and footer stay below the header row */
+    .panel:has(#calendarGrid)>.cal-head>.calendar-grid,
+    .panel:has(#calendarGrid)>.cal-head>.calendar-footer {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+}
+
+/* Small phones */
+@media (max-width: 600px) {
+
+    .panel:has(#calendarGrid) .cal-head {
+        column-gap: 5px;
+    }
+
+    .panel:has(#calendarGrid) .cal-controls {
+        gap: 5px;
+    }
+
+    .panel:has(#calendarGrid) .cal-month {
+        font-size: 14px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .panel:has(#calendarGrid) .nav-arrow {
+        flex: 0 0 34px;
+        width: 34px;
+        min-width: 34px;
+        height: 34px;
+        min-height: 34px;
+        padding: 0;
+    }
+
+    .panel:has(#calendarGrid) .date-search-toggle {
+        flex-basis: 34px;
+        width: 34px;
+        height: 34px;
+    }
+
+    .panel:has(#calendarGrid) .date-picker-container>.date-picker-wrapper.is-open {
+        flex-basis: 125px;
+        width: 125px;
+        max-width: 125px;
+    }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+
+    .panel:has(#calendarGrid) .cal-controls {
+        gap: 3px;
+    }
+
+    .panel:has(#calendarGrid) .cal-month {
+        font-size: 12px;
+    }
+
+    .panel:has(#calendarGrid) .nav-arrow,
+    .panel:has(#calendarGrid) .date-search-toggle {
+        flex-basis: 30px;
+        width: 30px;
+        min-width: 30px;
+        height: 30px;
+        min-height: 30px;
+    }
+
+    .panel:has(#calendarGrid) .date-picker-container>.date-picker-wrapper.is-open {
+        flex-basis: 112px;
+        width: 112px;
+        max-width: 112px;
     }
 }

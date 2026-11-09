@@ -237,20 +237,6 @@
       <!-- Calendar grid -->
 
       <div class="panel">
-
-        <div class="date-picker-wrapper">
-          <label for="directDateInput">Choose Date</label>
-
-          <div class="date-input-group">
-            <input type="text" id="directDateInput" placeholder="DD/MM/YYYY" autocomplete="off" aria-label="Choose date"
-              class="date-picker-input">
-
-            <button type="button" class="btn-today date-go-btn" id="goDateBtn">
-              →
-            </button>
-          </div>
-        </div>
-
         <div class="cal-head">
           <div class="cal-controls">
 
@@ -261,26 +247,57 @@
             <button class="nav-arrow" type="button" id="nextMonthBtn" aria-label="Next">&gt;</button>
 
           </div>
-        </div>
+          <div class="date-picker-container">
 
-        <div class="calendar-grid" id="calendarGrid"></div>
+            <button type="button" class="date-search-toggle" id="dateSearchToggle" aria-label="Toggle date search"
+              aria-expanded="false">
+              <span class="search-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="icon icon-tabler icons-tabler-outline icon-tabler-calendar-search">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M11.5 21h-5.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4.5" />
+                  <path d="M16 3v4" />
+                  <path d="M8 3v4" />
+                  <path d="M4 11h16" />
+                  <path d="M15 18a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                  <path d="M20.2 20.2l1.8 1.8" />
+                </svg>
+              </span>
+            </button>
 
-        <div class="calendar-footer">
+            <div class="date-picker-wrapper" id="datePickerWrapper" hidden>
+              <label for="directDateInput">Choose Date</label>
 
-          <div class="calendar-color-guide">
-            <span><i class="status-dot pending"></i> Pending</span>
-            <span><i class="status-dot approved"></i> Approved</span>
-            <span><i class="status-dot rejected"></i> Rejected</span>
-            <span><i class="status-dot completed"></i> Completed</span>
+              <div class="date-input-group">
+                <input type="text" id="directDateInput" placeholder="DD/MM/YYYY" autocomplete="off"
+                  aria-label="Choose date" class="date-picker-input">
+
+                <button type="button" class="btn-today date-go-btn" id="goDateBtn">
+                  →
+                </button>
+              </div>
+            </div>
           </div>
 
-          <div class="calendar-bottom-actions">
-            <button class="btn-today" type="button" id="todayBtn">Today</button>
-          </div>
+          <div class="calendar-grid" id="calendarGrid"></div>
 
+          <div class="calendar-footer">
+
+            <div class="calendar-color-guide">
+              <span><i class="status-dot pending"></i> Pending</span>
+              <span><i class="status-dot approved"></i> Approved</span>
+              <span><i class="status-dot rejected"></i> Rejected</span>
+              <span><i class="status-dot completed"></i> Completed</span>
+            </div>
+
+            <div class="calendar-bottom-actions">
+              <button class="btn-today" type="button" id="todayBtn">Today</button>
+            </div>
+
+          </div>
         </div>
       </div>
-
       <!-- What is on for the selected day -->
 
       <div class="panel">
