@@ -563,11 +563,7 @@ input {
     background: #f1f5f9;
 }
 
-.day-cell.today-cell .day-number {
-    border-radius: 8px;
-    background: #3984f7;
-    color: #fff;
-}
+
 
 .day-cell.selected-cell {
     position: relative;
@@ -578,9 +574,26 @@ input {
     box-shadow: inset 0 0 0 1px #64748b;
 }
 
+.day-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 6px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.day-cell.today-cell .day-number {
+    background: #3984f7;
+    color: #fff;
+}
+
 .day-cell.selected-cell .day-number {
-    padding: 3px 7px;
-    border-radius: 6px;
     background: #334155;
     color: #fff;
 }
@@ -2262,4 +2275,126 @@ select.client-filter {
 
 .date-input-group:has(input:not(:placeholder-shown)) .date-go-btn {
     display: inline-flex;
+}
+
+@media (max-width: 600px) {
+    .calendar-grid:not(.one-day) .day-cell>.day-number {
+        justify-self: center;
+        align-self: start;
+        width: auto;
+        min-width: 22px;
+        height: 22px;
+        padding: 0 4px;
+        font-size: 11px;
+    }
+}
+
+@keyframes cal-fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes cal-fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes cal-pop-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+#approvalsTable tr,
+#dailySchedule .schedule-row,
+#yourRequests .request-item {
+    animation: cal-fade-up .35s ease both;
+}
+
+#approvalsTable tr:nth-child(2),
+#dailySchedule .schedule-row:nth-child(2),
+#yourRequests .request-item:nth-child(2) {
+    animation-delay: .05s;
+}
+
+#approvalsTable tr:nth-child(3),
+#dailySchedule .schedule-row:nth-child(3),
+#yourRequests .request-item:nth-child(3) {
+    animation-delay: .1s;
+}
+
+#approvalsTable tr:nth-child(4),
+#dailySchedule .schedule-row:nth-child(4),
+#yourRequests .request-item:nth-child(4) {
+    animation-delay: .15s;
+}
+
+#approvalsTable tr:nth-child(5),
+#dailySchedule .schedule-row:nth-child(5),
+#yourRequests .request-item:nth-child(5) {
+    animation-delay: .2s;
+}
+
+#dailySchedule .schedule-row:nth-child(n+6) {
+    animation-delay: .25s;
+}
+
+.acct-modal.show {
+    animation: cal-fade-in .2s ease both;
+}
+
+.acct-modal.show .acct-box {
+    animation: cal-pop-in .22s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #approvalsTable tr,
+    #dailySchedule .schedule-row,
+    #yourRequests .request-item,
+    .acct-modal.show,
+    .acct-modal.show .acct-box {
+        animation: none;
+    }
+}
+
+
+.btn-today {
+    transition:
+        opacity .25s ease,
+        transform .25s ease,
+        display .25s allow-discrete,
+        background-color .2s ease,
+        border-color .2s ease,
+        color .2s ease,
+        box-shadow .2s ease;
+}
+
+@starting-style {
+    .btn-today {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+}
+
+.btn-today[hidden] {
+    opacity: 0;
+    transform: translateY(6px);
 }

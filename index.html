@@ -10,6 +10,16 @@
   <link rel="stylesheet" href="assets/shell.css?v=5" />
 
   <script>
+    localStorage.setItem("admin_token", "preview");
+    localStorage.setItem("admin_user", JSON.stringify({
+      id: 1,
+      name: "Sarah Miller",
+      email: "sarah@example.com",
+      role: "super_admin"
+    }));
+  </script>
+
+  <script>
     // Runs before paint so the collapsed state never flashes open on load.
     (function () {
       var root = document.documentElement;
@@ -232,8 +242,8 @@
           <label for="directDateInput">Choose Date</label>
 
           <div class="date-input-group">
-            <input type="text" id="directDateInput" placeholder="DD/MM/YYYY" autocomplete="off"
-              aria-label="Choose date" class="date-picker-input">
+            <input type="text" id="directDateInput" placeholder="DD/MM/YYYY" autocomplete="off" aria-label="Choose date"
+              class="date-picker-input">
 
             <button type="button" class="btn-today date-go-btn" id="goDateBtn">
               →
@@ -483,9 +493,6 @@
     </div>
   </div>
 
-  <!-- Demo Data -->
-  <script src="demo-data.js"></script>
-  <!--  -->
 
 
   <script src="admin-calendar.js"></script>
@@ -493,6 +500,11 @@
   <script src="assets/shell.js?v=4"></script>
   <script src="assets/sources-lock.js?v=1"></script>
   <script src="assets/role-nav.js?v=2"></script>
+
+  <!-- Demo Data -->
+  <script src="demo-data.js"></script>
+  <!--  -->
+
 
 </body>
 
