@@ -2828,3 +2828,69 @@ select.client-filter {
         max-width: 112px;
     }
 }
+
+
+.cal-controls .nav-arrow,
+.cal-controls .date-picker-container {
+    flex-shrink: 0;
+}
+
+.cal-controls .cal-month {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cal-controls .date-picker-container>.date-picker-wrapper {
+    position: static;
+    top: auto;
+    right: auto;
+    transform: none;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex: none;
+    width: 0;
+    max-width: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    box-shadow: none;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        width .3s ease,
+        max-width .3s ease,
+        padding .3s ease,
+        opacity .2s ease,
+        visibility .2s ease;
+}
+
+.cal-controls .date-picker-container>.date-picker-wrapper.is-open {
+    width: 230px;
+    max-width: 230px;
+    padding: 3px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.cal-controls .date-picker-container>.date-picker-wrapper label {
+    display: none;
+}
+
+.cal-controls .date-picker-container .date-input-group {
+    gap: 6px;
+    width: 100%;
+    min-width: 0;
+}
+
+.cal-controls .date-picker-container .date-input-group input {
+    flex: 1 1 auto;
+    width: 100%;
+    min-width: 0;
+    height: 40px;
+}
