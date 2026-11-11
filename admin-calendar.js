@@ -552,10 +552,11 @@ function renderCalendar() {
       renderCalendar();
       renderDailySchedule();
 
-      document
-        .getElementById("dailySchedule")
-        .closest(".panel")
-        .scrollIntoView({ behavior: "smooth", block: "start" });
+      requestAnimationFrame(() => {
+        document
+          .getElementById("dailySchedule")
+          .scrollIntoView({ behavior: "smooth", block: "start" });
+      });
     };
 
     grid.appendChild(cell);

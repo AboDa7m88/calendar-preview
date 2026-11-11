@@ -2169,6 +2169,10 @@ select.client-filter {
     }
 }
 
+#dailySchedule {
+    scroll-margin-top: 140px;
+}
+
 #approvalsTable tr,
 #dailySchedule .schedule-row,
 #yourRequests .request-item {
@@ -2995,7 +2999,10 @@ select.client-filter {
     }
 }
 
-.panel:has(#calendarGrid) .date-input-group .date-go-btn {
+.panel:has(#calendarGrid) .date-input-group .date-go-btn,
+.panel:has(#calendarGrid) .date-input-group .date-go-btn:hover,
+.panel:has(#calendarGrid) .date-input-group .date-go-btn:active,
+.panel:has(#calendarGrid) .date-input-group .date-go-btn:focus {
     width: 32px !important;
     height: 32px;
     border: none;
@@ -3004,10 +3011,6 @@ select.client-filter {
     box-shadow: none;
 }
 
-.panel:has(#calendarGrid) .date-input-group .date-go-btn:hover {
-    background: #334155;
-    color: #fff;
-}
 
 @media (min-width: 951px) {
     .panel:has(#calendarGrid) .cal-head {
