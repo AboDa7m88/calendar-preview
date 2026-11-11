@@ -186,6 +186,7 @@ function initials(name) {
 function statusLabel(status) {
   if (status === "approved") return "Confirmed";
   if (status === "rejected") return "Declined";
+  if (status === "content") return "Content";
   return "Pending";
 }
 
@@ -448,15 +449,8 @@ function updateTodayButton() {
 
   if (!todayBtn) return;
 
-  const today = new Date();
-  const todayStr = toDateStr(today);
-  const isTodaySelected = selectedDate === todayStr;
-
-  const isCurrentMonth =
-    currentDate.getFullYear() === today.getFullYear() &&
-    currentDate.getMonth() === today.getMonth();
-
-  todayBtn.hidden = isTodaySelected && isCurrentMonth;
+  todayBtn.hidden = false;
+  todayBtn.textContent = new Date().getDate();
 }
 
 function renderCalendar() {
@@ -557,6 +551,11 @@ function renderCalendar() {
 
       renderCalendar();
       renderDailySchedule();
+
+      document
+        .getElementById("dailySchedule")
+        .closest(".panel")
+        .scrollIntoView({ behavior: "smooth", block: "start" });
     };
 
     grid.appendChild(cell);
@@ -617,7 +616,7 @@ function renderDailySchedule() {
          meeting and the client and reaches the rest through the eye - see the
          .wide-only rules in the phone block. */
       return `
-      <div class="schedule-row">
+      <div class="schedule-row ${esc(row.status || "pending")}">
         <div class="schedule-date">
           <span class="m">${MONTHS_SHORT[date.getMonth()]}</span>
           <span class="d">${String(date.getDate()).padStart(2, "0")}</span>

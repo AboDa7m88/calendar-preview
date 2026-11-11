@@ -2633,11 +2633,6 @@ select.client-filter {
 }
 
 
-/* =====================================
-   FIX: Calendar Search Position
-   Mobile & Tablet
-===================================== */
-
 @media (max-width: 950px) {
 
     .panel:has(#calendarGrid) .cal-head {
@@ -2763,24 +2758,181 @@ select.client-filter {
     }
 }
 
-/* Small phones */
-@media (max-width: 600px) {
 
+/* =====================================
+   Calendar Header - Base
+===================================== */
+
+.panel:has(#calendarGrid) .cal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+    overflow: visible;
+}
+
+.panel:has(#calendarGrid) .cal-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    flex-shrink: 0;
+}
+
+.panel:has(#calendarGrid) .cal-month {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.panel:has(#calendarGrid) .date-picker-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    min-width: 0;
+    flex-shrink: 0;
+    overflow: visible;
+}
+
+.panel:has(#calendarGrid) #todayBtn {
+    position: static;
+    flex: 0 0 40px;
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    min-height: 40px;
+    padding: 0;
+    margin: 0;
+}
+
+
+.panel:has(#calendarGrid) .date-picker-container {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    overflow: visible;
+}
+
+/* Date Search */
+
+.panel:has(#calendarGrid) .date-picker-container>.date-picker-wrapper {
+    position: static;
+    display: flex;
+    align-items: center;
+    flex: 0 0 0;
+    width: 0;
+    max-width: 0;
+    height: 46px;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    box-shadow: none;
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        width .3s ease,
+        max-width .3s ease,
+        padding .3s ease,
+        opacity .2s ease,
+        visibility .2s ease;
+}
+
+.panel:has(#calendarGrid) .date-picker-container>.date-picker-wrapper.is-open {
+    flex-basis: 230px;
+    width: 230px;
+    max-width: 230px;
+    padding: 3px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.panel:has(#calendarGrid) .date-picker-wrapper label {
+    display: none;
+}
+
+.panel:has(#calendarGrid) .date-input-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    min-width: 0;
+}
+
+.panel:has(#calendarGrid) .date-input-group input {
+    flex: 1 1 auto;
+    width: 100%;
+    min-width: 0;
+    height: 40px;
+}
+
+
+
+
+
+
+@media (min-width: 951px) {
     .panel:has(#calendarGrid) .cal-head {
-        column-gap: 5px;
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-rows: 46px;
+        column-gap: 16px;
+        align-items: center;
+        padding: 0 !important;
     }
 
     .panel:has(#calendarGrid) .cal-controls {
-        gap: 5px;
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: start;
+    }
+
+    .panel:has(#calendarGrid) .date-picker-container {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: end;
     }
 
     .panel:has(#calendarGrid) .cal-month {
+        min-width: 150px;
+        flex: 0 0 auto;
+        text-align: center;
+    }
+}
+
+
+@media (max-width: 950px) {
+    .panel:has(#calendarGrid) #todayBtn {
+        flex-basis: 36px;
+        width: 36px;
+        height: 36px;
+        min-height: 36px;
         font-size: 14px;
-        overflow: hidden;
-        text-overflow: ellipsis;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .panel:has(#calendarGrid) .cal-head {
+        column-gap: 7px;
     }
 
-    .panel:has(#calendarGrid) .nav-arrow {
+    .panel:has(#calendarGrid) .cal-controls {
+        gap: 10px;
+    }
+
+    .panel:has(#calendarGrid) .cal-month {
+        font-size: 15px;
+    }
+
+    .panel:has(#calendarGrid) .nav-arrow,
+    .panel:has(#calendarGrid) .date-search-toggle {
         flex: 0 0 34px;
         width: 34px;
         min-width: 34px;
@@ -2789,10 +2941,12 @@ select.client-filter {
         padding: 0;
     }
 
-    .panel:has(#calendarGrid) .date-search-toggle {
+    .panel:has(#calendarGrid) #todayBtn {
         flex-basis: 34px;
         width: 34px;
         height: 34px;
+        min-height: 34px;
+        font-size: 13px;
     }
 
     .panel:has(#calendarGrid) .date-picker-container>.date-picker-wrapper.is-open {
@@ -2802,16 +2956,13 @@ select.client-filter {
     }
 }
 
-/* Very small phones */
+
 @media (max-width: 380px) {
-
     .panel:has(#calendarGrid) .cal-controls {
-        gap: 3px;
+        gap: 7px;
     }
 
-    .panel:has(#calendarGrid) .cal-month {
-        font-size: 12px;
-    }
+
 
     .panel:has(#calendarGrid) .nav-arrow,
     .panel:has(#calendarGrid) .date-search-toggle {
@@ -2829,68 +2980,333 @@ select.client-filter {
     }
 }
 
+@media (max-width: 950px) {
+    .panel:has(#calendarGrid) .date-picker-container {
+        flex-direction: row !important;
+        direction: ltr !important;
+    }
 
-.cal-controls .nav-arrow,
-.cal-controls .date-picker-container {
-    flex-shrink: 0;
+    .panel:has(#calendarGrid) #dateSearchToggle {
+        order: 1;
+    }
+
+    .panel:has(#calendarGrid) #todayBtn {
+        order: 2;
+    }
 }
 
-.cal-controls .cal-month {
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.cal-controls .date-picker-container>.date-picker-wrapper {
-    position: static;
-    top: auto;
-    right: auto;
-    transform: none;
-    display: flex;
-    align-items: center;
-    gap: 0;
-    flex: none;
-    width: 0;
-    max-width: 0;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-    border: 0;
-    border-radius: 8px;
+.panel:has(#calendarGrid) .date-input-group .date-go-btn {
+    width: 32px !important;
+    height: 32px;
+    border: none;
     background: transparent;
+    color: #94a3b8;
     box-shadow: none;
-    opacity: 0;
-    visibility: hidden;
+}
+
+.panel:has(#calendarGrid) .date-input-group .date-go-btn:hover {
+    background: #334155;
+    color: #fff;
+}
+
+@media (min-width: 951px) {
+    .panel:has(#calendarGrid) .cal-head {
+        column-gap: 24px;
+    }
+
+    .panel:has(#calendarGrid) .cal-controls {
+        width: auto;
+        max-width: none;
+        margin: 0;
+        justify-content: flex-start;
+        gap: 36px;
+    }
+
+    .panel:has(#calendarGrid) .date-picker-container {
+        gap: 0;
+    }
+
+    .panel:has(#calendarGrid) .date-picker-container>.date-picker-wrapper {
+        order: 0;
+        height: 40px;
+        transform: none;
+    }
+
+    .panel:has(#calendarGrid) #dateSearchToggle {
+        order: 1;
+        margin-right: 10px;
+    }
+
+    .panel:has(#calendarGrid) #todayBtn {
+        order: 2;
+    }
+
+    .panel:has(#calendarGrid) .date-picker-container>.date-picker-wrapper.is-open {
+        margin-right: 10px;
+        padding: 0;
+    }
+
+    .panel:has(#calendarGrid) .date-picker-container .date-input-group {
+        height: 40px;
+        padding: 3px;
+    }
+
+    .panel:has(#calendarGrid) .date-picker-container .date-input-group input {
+        height: 32px;
+    }
+}
+
+
+@media (max-width: 950px) {
+    .panel:has(#calendarGrid) .cal-head {
+        gap: 6px;
+    }
+
+    .panel:has(#calendarGrid) .cal-controls {
+        gap: 4px;
+    }
+
+    .panel:has(#calendarGrid) .nav-arrow,
+    .panel:has(#calendarGrid) .date-search-toggle,
+    .panel:has(#calendarGrid) #todayBtn {
+        flex: 0 0 30px;
+        width: 30px;
+        min-width: 30px;
+        height: 30px;
+        min-height: 30px;
+        font-size: 12px;
+        border-radius: 8px;
+    }
+
+    .panel:has(#calendarGrid) .date-search-toggle svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .panel:has(#calendarGrid) .date-picker-container {
+        gap: 4px;
+    }
+
+    .panel:has(#calendarGrid) .date-picker-container>.date-picker-wrapper {
+        height: 30px;
+    }
+
+    .panel:has(#calendarGrid) .date-picker-container>.date-picker-wrapper.is-open {
+        flex-basis: 130px;
+        width: 130px;
+        max-width: 130px;
+        padding: 0;
+    }
+
+    .panel:has(#calendarGrid) .date-picker-container .date-input-group {
+        height: 30px;
+        padding: 2px;
+        gap: 2px;
+    }
+
+    .panel:has(#calendarGrid) .date-picker-container .date-input-group input {
+        height: 24px;
+        font-size: 11px;
+    }
+
+    .panel:has(#calendarGrid) .date-input-group .date-go-btn {
+        width: 24px !important;
+        height: 24px;
+        min-height: 24px;
+        flex: 0 0 24px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 380px) {
+
+
+    .panel:has(#calendarGrid) .date-picker-container>.date-picker-wrapper.is-open {
+        flex-basis: 110px;
+        width: 110px;
+        max-width: 110px;
+    }
+
+    .panel-head h2 {
+        font-size: 16px;
+    }
+
+}
+
+.panel:has(#calendarGrid) .date-picker-container>.date-picker-wrapper {
     transition:
         width .3s ease,
         max-width .3s ease,
+        flex-basis .3s ease,
         padding .3s ease,
+        margin-right .3s ease,
         opacity .2s ease,
         visibility .2s ease;
 }
 
-.cal-controls .date-picker-container>.date-picker-wrapper.is-open {
-    width: 230px;
-    max-width: 230px;
-    padding: 3px;
-    opacity: 1;
-    visibility: visible;
-}
-
-.cal-controls .date-picker-container>.date-picker-wrapper label {
+.calendar-grid:not(.one-day) .day-cell[data-count] .event-card small {
     display: none;
 }
 
-.cal-controls .date-picker-container .date-input-group {
-    gap: 6px;
-    width: 100%;
-    min-width: 0;
+@media (min-width: 601px) {
+    .calendar-grid:not(.one-day) .day-cell[data-count] .event-card {
+        padding: 3px 7px;
+        font-size: 10px;
+        line-height: 1.3;
+    }
 }
 
-.cal-controls .date-picker-container .date-input-group input {
-    flex: 1 1 auto;
-    width: 100%;
-    min-width: 0;
-    height: 40px;
+:root {
+    --dot-alpha: 60%;
+
+    --dot-pending: #f59e0b;
+    --dot-approved: #22c55e;
+    --dot-rejected: #ef4444;
+    --dot-content: #8b5cf6;
+
+    --st-pending: #b45309;
+    --st-pending-bg: #fef3c7;
+    --st-pending-border: #fde68a;
+
+    --st-approved: #17803d;
+    --st-approved-bg: #e8faef;
+    --st-approved-border: #b8e7c8;
+
+    --st-rejected: #dc2626;
+    --st-rejected-bg: #fef2f2;
+    --st-rejected-border: #fecaca;
+
+    --st-content: #5b3cc4;
+    --st-content-bg: #f0ebff;
+    --st-content-border: #ddd2ff;
+}
+
+.event-card.pending {
+    background: var(--st-pending-bg);
+    border: 1px solid var(--st-pending-border);
+    color: var(--st-pending);
+}
+
+.event-card.approved {
+    background: var(--st-approved-bg);
+    border: 1px solid var(--st-approved-border);
+    color: var(--st-approved);
+}
+
+.event-card.rejected {
+    background: var(--st-rejected-bg);
+    border: 1px solid var(--st-rejected-border);
+    color: var(--st-rejected);
+}
+
+.event-card.content {
+    display: block;
+    background: var(--st-content-bg);
+    border: 1px solid var(--st-content-border);
+    color: var(--st-content);
+    text-decoration: none;
+}
+
+.event-card.content:hover {
+    border-color: #b9a6ff;
+}
+
+.badge.pending {
+    background: var(--st-pending-bg);
+    color: var(--st-pending);
+}
+
+.badge.approved {
+    background: var(--st-approved-bg);
+    color: var(--st-approved);
+}
+
+.badge.rejected {
+    background: var(--st-rejected-bg);
+    color: var(--st-rejected);
+}
+
+.badge.content {
+    background: var(--st-content-bg);
+    color: var(--st-content);
+}
+
+.status-dot.pending {
+    background: color-mix(in srgb, var(--dot-pending, #f59e0b) var(--dot-alpha, 60%), transparent);
+}
+
+.status-dot.approved {
+    background: color-mix(in srgb, var(--dot-approved, #22c55e) var(--dot-alpha, 60%), transparent);
+}
+
+.status-dot.rejected {
+    background: color-mix(in srgb, var(--dot-rejected, #ef4444) var(--dot-alpha, 60%), transparent);
+}
+
+.status-dot.content {
+    background: color-mix(in srgb, var(--dot-content, #8b5cf6) var(--dot-alpha, 60%), transparent);
+}
+
+@media (max-width: 600px) {
+    .calendar-grid:not(.one-day) .day-cell .event-card.pending {
+        border: 0;
+        background: color-mix(in srgb, var(--dot-pending, #f59e0b) var(--dot-alpha, 60%), transparent);
+    }
+
+    .calendar-grid:not(.one-day) .day-cell .event-card.approved {
+        border: 0;
+        background: color-mix(in srgb, var(--dot-approved, #22c55e) var(--dot-alpha, 60%), transparent);
+    }
+
+    .calendar-grid:not(.one-day) .day-cell .event-card.rejected {
+        border: 0;
+        background: color-mix(in srgb, var(--dot-rejected, #ef4444) var(--dot-alpha, 60%), transparent);
+    }
+
+    .calendar-grid:not(.one-day) .day-cell .event-card.content {
+        border: 0;
+        background: color-mix(in srgb, var(--dot-content, #8b5cf6) var(--dot-alpha, 60%), transparent);
+    }
+}
+
+
+.schedule-row.pending .schedule-date {
+    background: var(--st-pending-bg);
+    box-shadow: inset 0 0 0 1px var(--st-pending-border);
+}
+
+.schedule-row.approved .schedule-date {
+    background: var(--st-approved-bg);
+    box-shadow: inset 0 0 0 1px var(--st-approved-border);
+}
+
+.schedule-row.rejected .schedule-date {
+    background: var(--st-rejected-bg);
+    box-shadow: inset 0 0 0 1px var(--st-rejected-border);
+}
+
+.schedule-row.content .schedule-date {
+    background: var(--st-content-bg);
+    box-shadow: inset 0 0 0 1px var(--st-content-border);
+}
+
+
+.schedule-row.pending .schedule-date .m,
+.schedule-row.pending .schedule-date .d {
+    color: var(--st-pending);
+}
+
+.schedule-row.approved .schedule-date .m,
+.schedule-row.approved .schedule-date .d {
+    color: var(--st-approved);
+}
+
+.schedule-row.rejected .schedule-date .m,
+.schedule-row.rejected .schedule-date .d {
+    color: var(--st-rejected);
+}
+
+.schedule-row.content .schedule-date .m,
+.schedule-row.content .schedule-date .d {
+    color: var(--st-content);
 }
