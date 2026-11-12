@@ -459,7 +459,11 @@ function renderCalendar() {
 
   if (!grid || !monthTitle) return;
 
-  monthTitle.innerText = `${MONTHS[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
+  const showYear = currentDate.getFullYear() !== new Date().getFullYear();
+
+  monthTitle.innerText = showYear
+    ? `${MONTHS[currentDate.getMonth()]} ${currentDate.getFullYear()}`
+    : MONTHS[currentDate.getMonth()];
 
   const days = visibleDays();
   const todayStr = toDateStr(new Date());
@@ -528,7 +532,7 @@ function renderCalendar() {
           .join(" · ");
 
         return `
-          <div class="event-card ${esc(a.status || "pending")}" title="${esc(title + (meta ? " · " + meta : ""))}">
+          <div class="event-card ${esc(a.type || a.status || "pending")}" title="${esc(title + (meta ? " · " + meta : ""))}">
             <span class="ev-line">● <b>${esc(title)}</b></span>
             <small class="ev-line">${esc(meta)}</small>
           </div>`;
@@ -617,7 +621,7 @@ function renderDailySchedule() {
          meeting and the client and reaches the rest through the eye - see the
          .wide-only rules in the phone block. */
       return `
-      <div class="schedule-row ${esc(row.status || "pending")}">
+      <div class="schedule-row ${esc(row.type || row.status || "pending")}">
         <div class="schedule-date">
           <span class="m">${MONTHS_SHORT[date.getMonth()]}</span>
           <span class="d">${String(date.getDate()).padStart(2, "0")}</span>
