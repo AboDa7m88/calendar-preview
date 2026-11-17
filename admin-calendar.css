@@ -3387,10 +3387,10 @@ select.client-filter {
 .panel:has(#calendarGrid) .date-search-toggle,
 .panel:has(#calendarGrid) #todayBtn {
     flex: 0 0 40px;
-    width: 40px;
-    min-width: 40px;
-    height: 40px;
-    min-height: 40px;
+    width: 36px;
+    min-width: 36px;
+    height: 36px;
+    min-height: 36px;
     padding: 0;
     border-radius: 10px;
     font-size: 15px;
@@ -3398,8 +3398,9 @@ select.client-filter {
 
 
 .panel:has(#calendarGrid) #todayBtn {
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 400;
+    padding: 0;
 }
 
 .panel:has(#calendarGrid) .date-search-toggle svg {
@@ -3471,5 +3472,19 @@ select.client-filter {
     .panel:has(#calendarGrid) .date-search-toggle svg {
         width: 20px;
         height: 20px;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 950px) {
+    .panel:has(#calendarGrid) .cal-controls {
+        gap: 16px;
+    }
+
+    .panel:has(#calendarGrid) .cal-month {
+        flex: 0 0 auto;
+        min-width: 130px;
+        font-size: 18px;
+        overflow: visible;
+        text-overflow: clip;
     }
 }
