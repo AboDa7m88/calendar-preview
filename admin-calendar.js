@@ -621,8 +621,7 @@ function renderDailySchedule() {
          meeting and the client and reaches the rest through the eye - see the
          .wide-only rules in the phone block. */
       return `
-      <div class="schedule-row ${esc(row.type || row.status || "pending")}">
-        <div class="schedule-date">
+<div class="schedule-row ${esc(row.type || row.status || "pending")}" onclick="openRequestModal(${Number(row.id)})">        <div class="schedule-date">
           <span class="m">${MONTHS_SHORT[date.getMonth()]}</span>
           <span class="d">${String(date.getDate()).padStart(2, "0")}</span>
         </div>
@@ -635,7 +634,7 @@ function renderDailySchedule() {
         <span class="schedule-time wide-only">${esc(prettyTime(row.time))}</span>
         <span class="badge wide-only ${esc(row.status || "pending")}">${statusLabel(row.status)}</span>
 
-        ${eyeButton(row.id)}
+        
       </div>
     `;
     })
@@ -990,7 +989,7 @@ function renderYourRequests() {
   list.innerHTML = pageRows
     .map(
       (row) => `
-    <div class="request-item">
+    <div class="request-item" onclick="openRequestModal(${Number(row.id)})">
       <div>
         <h4>${esc(row.topic || row.title || "Meeting")}</h4>
         <p>${esc(row.company_name || row.client || "Client")}<span class="wide-only">
@@ -999,7 +998,6 @@ function renderYourRequests() {
         </span></p>
       </div>
       <span class="badge wide-only ${esc(row.status || "pending")}">${statusLabel(row.status)}</span>
-      ${eyeButton(row.id)}
     </div>
   `,
     )

@@ -1008,7 +1008,7 @@ input {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 12px;
-    margin-bottom: 4px;
+    margin-bottom: 14px;
 }
 
 .section-head h3 {
@@ -1304,8 +1304,8 @@ input {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 16px;
-    padding-top: 16px;
-    margin-top: 16px;
+    padding-top: 12px;
+    margin-top: 0px;
     border-top: 1px solid var(--line);
 }
 
@@ -1827,9 +1827,9 @@ select.client-filter {
         width: 36px;
         height: 36px;
         padding: 0;
-        border: 1px solid #dfe3ea;
+        border: 1px solid transparent;
+        background: transparent;
         border-radius: 9px;
-        background: #fff;
         color: var(--muted);
         cursor: pointer;
     }
